@@ -167,7 +167,6 @@ export default class ZimeitiImagePlugin extends Plugin {
   }
 
   async onunload() {
-    this.app.workspace.detachLeavesOfType(VIEW_TYPE_ZIMEITI);
   }
 
   async loadSettings() {
@@ -184,7 +183,6 @@ export default class ZimeitiImagePlugin extends Plugin {
       leaf = this.app.workspace.getRightLeaf(false) ?? undefined;
       await leaf?.setViewState({ type: VIEW_TYPE_ZIMEITI, active: true });
     }
-    if (leaf) this.app.workspace.revealLeaf(leaf);
   }
 
   async openDocumentation() {
@@ -221,7 +219,6 @@ export default class ZimeitiImagePlugin extends Plugin {
     if (file instanceof TFile) {
       const leaf = this.app.workspace.getLeaf(true);
       await leaf.openFile(file);
-      this.app.workspace.revealLeaf(leaf);
     }
   }
 
